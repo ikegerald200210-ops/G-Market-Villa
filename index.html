@@ -1,0 +1,2965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e5631">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="G-Market Villa - Partner & Sell Your Products Online. Connect with buyers nationwide.">
+    <title>G-Market Villa - Partner & Sell Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        :root {
+            --primary: #1e5631;
+            --primary-light: #2d7a46;
+            --primary-dark: #143d22;
+            --secondary: #e67e22;
+            --accent: #f1c40f;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --info: #3498db;
+            --warning: #f39c12;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.75rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        .logo-text { display: flex; flex-direction: column; }
+
+        .logo-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
+
+        .logo-subtitle { font-size: 0.7rem; opacity: 0.9; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+        .nav-links a, .nav-links button {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover { opacity: 0.8; transform: translateY(-1px); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        .btn:active { transform: translateY(0); }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary) 0%, #d35400 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #1e8449 100%);
+            color: white;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, var(--info) 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning) 0%, #d68910 100%);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.85rem; }
+
+        .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; }
+
+        .btn-block { width: 100%; }
+
+        /* Main Content */
+        main { margin-top: 80px; padding: 2rem 0; min-height: calc(100vh - 80px); }
+
+        .page { display: none; animation: fadeIn 0.4s ease-out; }
+
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.2; }
+
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            flex-wrap: wrap;
+        }
+
+        .hero-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+
+        /* Update Banner */
+        .update-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .update-content { display: flex; align-items: center; gap: 1rem; }
+
+        .update-icon { font-size: 1.5rem; }
+
+        .update-text { font-weight: 600; font-size: 0.95rem; }
+
+        .update-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .update-close:hover { background: rgba(255,255,255,0.3); }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+        .stat-number { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin-bottom: 0.25rem; }
+
+        .stat-label { color: #666; font-size: 0.9rem; }
+
+        /* Filters */
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .filters input, .filters select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .filters input:focus, .filters select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 86, 49, 0.1);
+        }
+
+        .filters .search-box { flex: 2; min-width: 200px; }
+
+        .filters .price-range { display: flex; gap: 0.5rem; align-items: center; }
+
+        .price-range input { width: 100px; }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img { transform: scale(1.05); }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #d35400 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-info { padding: 1.25rem; }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-partner {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-partner:hover { color: var(--primary); text-decoration: underline; }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .product-delivery {
+            font-size: 0.8rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 2rem;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            min-height: 700px;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, var(--dark) 0%, #16213e 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-logo img { width: 40px; height: 40px; border-radius: 50%; }
+
+        .sidebar-menu { list-style: none; }
+
+        .sidebar-menu li { margin-bottom: 0.5rem; }
+
+        .sidebar-menu a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.875rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .dashboard-content { padding: 2rem; background: #f8f9fa; }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-header h2 { font-size: 1.5rem; font-weight: 700; }
+
+        /* Earnings Cards */
+        .earnings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .earning-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .earning-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+        .earning-card.success { border-left-color: var(--success); }
+        .earning-card.warning { border-left-color: var(--warning); }
+        .earning-card.info { border-left-color: var(--info); }
+
+        .earning-label { font-size: 0.85rem; color: #666; margin-bottom: 0.25rem; }
+
+        .earning-amount { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+
+        /* Forms */
+        .form-group { margin-bottom: 1.25rem; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 86, 49, 0.1);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        /* Camera Section */
+        .camera-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 2px dashed #dee2e6;
+        }
+
+        .camera-preview {
+            width: 100%;
+            height: 200px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .camera-preview img, .camera-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .camera-placeholder {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .camera-placeholder-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+        .camera-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        .image-preview-grid {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .image-preview-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #e9ecef;
+        }
+
+        .image-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview-item .remove-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hidden-input { display: none; }
+
+        /* Bank Options */
+        .bank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bank-option {
+            border: 2px solid #e9ecef;
+            padding: 1rem 0.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .bank-option:hover, .bank-option.selected {
+            border-color: var(--primary);
+            background: rgba(30, 86, 49, 0.05);
+        }
+
+        .bank-option i { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+
+        .bank-option span { font-size: 0.8rem; font-weight: 600; }
+
+        /* Specs Section */
+        .specs-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .specs-section.active { display: block; }
+
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+
+        /* Complaint Section */
+        .complaint-section {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border: 2px solid #fc8181;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .complaint-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #c53030;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25d366;
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Admin Panel */
+        .admin-withdrawal {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 2px solid #38b2ac;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .profit-display {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .profit-amount { font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem; }
+
+        /* Delivery Option */
+        .delivery-option {
+            background: #fff8e1;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .delivery-fee-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+
+        .delivery-fee-section.active { display: block; }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active { display: flex; animation: fadeIn 0.3s; }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            padding: 2rem;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 { font-size: 1.5rem; font-weight: 700; }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover { background: #f0f0f0; color: var(--danger); }
+
+        /* Product Detail Modal */
+        .product-detail-image {
+            width: 100%;
+            height: 250px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .product-detail-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .image-carousel {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .carousel-item {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .carousel-item.active { border-color: var(--primary); }
+
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-row:last-child { border-bottom: none; }
+
+        .detail-label { color: #666; font-size: 0.9rem; }
+
+        .detail-value { font-weight: 600; }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .partner-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        /* Reviews */
+        .reviews-section { margin: 1.5rem 0; }
+
+        .review-item {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviewer-name { font-weight: 600; }
+
+        .review-rating { color: var(--warning); }
+
+        .review-date { font-size: 0.8rem; color: #888; }
+
+        .review-form {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        /* Cart & Wishlist */
+        .cart-item, .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cart-item-info { display: flex; align-items: center; gap: 1rem; }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .cart-item-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .cart-item-details h4 { font-weight: 600; margin-bottom: 0.25rem; }
+
+        .cart-item-details p { font-size: 0.85rem; color: #666; }
+
+        .cart-total {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-total-row.final {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            padding-top: 0.5rem;
+            border-top: 2px solid #eee;
+            margin-top: 0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .empty-state i { font-size: 4rem; margin-bottom: 1rem; color: #ddd; }
+
+        /* Activity List */
+        .activity-list { background: white; padding: 1rem; border-radius: 12px; }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .activity-item:last-child { border-bottom: none; }
+
+        .activity-info h4 { font-weight: 600; margin-bottom: 0.25rem; }
+
+        .activity-info p { font-size: 0.85rem; color: #666; }
+
+        .activity-amount { text-align: right; }
+
+        .activity-amount .amount { font-weight: 700; color: var(--primary); }
+
+        .activity-amount .status {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 0.25rem;
+        }
+
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-processing { background: #cce5ff; color: #004085; }
+        .status-completed { background: #d4edda; color: #155724; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dark);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: none;
+            z-index: 3000;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.3s ease-out;
+            max-width: 350px;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast.show { display: block; }
+
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--danger); }
+        .toast.warning { background: var(--warning); }
+        .toast.info { background: var(--info); }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Partner Profile */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .profile-header h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+        .profile-header p { opacity: 0.9; }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .portfolio-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title { font-size: 1.1rem; font-weight: 700; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--primary-dark); padding: 1rem; flex-direction: column; gap: 0.5rem; }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .dashboard { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .filters { flex-direction: column; align-items: stretch; }
+            .filters .search-box { width: 100%; }
+            .price-range { justify-content: space-between; }
+            .hero-trust { flex-direction: column; gap: 1rem; }
+            .modal-content { padding: 1.5rem; margin: 1rem; }
+        }
+
+        /* Print styles */
+        @media print {
+            header, .nav-links, .btn, .sidebar { display: none !important; }
+            main { margin-top: 0; }
+            .page { display: block !important; }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-icon">
+                    <img src="logo.png" alt="G-Market Villa Logo">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">G-Market Villa</span>
+                    <span class="logo-subtitle">Partner With Us</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#" onclick="showPage('home')"><i class="fas fa-store"></i> Marketplace</a>
+                <a href="#" onclick="showPage('partner')"><i class="fas fa-handshake"></i> Become a Partner</a>
+                <a href="#" onclick="showPage('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="#" onclick="showPage('cart')"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount" class="cart-badge">0</span></a>
+                <a href="#" onclick="showPage('wishlist')"><i class="fas fa-heart"></i> Wishlist</a>
+                <span id="userDisplay" style="color:white; font-weight:600;"></span>
+                <button class="btn btn-outline btn-sm" id="loginBtn" onclick="showLoginModal()">Login</button>
+                <button class="btn btn-outline btn-sm" id="logoutBtn" style="display:none;" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Update Banner -->
+        <div class="update-banner" id="updateBanner" style="display:none;">
+            <div class="update-content">
+                <span class="update-icon"><i class="fas fa-bullhorn"></i></span>
+                <span class="update-text" id="updateText">Welcome to G-Market Villa!</span>
+            </div>
+            <button class="update-close" onclick="closeUpdate()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-handshake"></i> Trusted by 10,000+ Partners Across Nigeria
+                    </div>
+                    <h1>Partner & Grow Your Business Online</h1>
+                    <p>Join G-Market Villa and connect with buyers nationwide. Earn <strong>97.5%</strong> on every sale with our fair <strong>2.5%</strong> partnership fee.</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-lg" onclick="showPage('partner')">
+                            <i class="fas fa-handshake"></i> Become a Partner Today
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="showPage('dashboard')">
+                            <i class="fas fa-chart-line"></i> View Dashboard
+                        </button>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="hero-trust-item"><i class="fas fa-bolt"></i> Instant Withdrawals</div>
+                        <div class="hero-trust-item"><i class="fas fa-shield-alt"></i> Secure Payments</div>
+                        <div class="hero-trust-item"><i class="fas fa-headset"></i> 24/7 Support</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                    <div class="stat-number">2.5%</div>
+                    <div class="stat-label">Partnership Fee Only</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="stat-number" id="statEarnings">₦0</div>
+                    <div class="stat-label">Your Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-university"></i></div>
+                    <div class="stat-number">24hrs</div>
+                    <div class="stat-label">Bank Transfer</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Active Partners</div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search products..." oninput="filterProducts()">
+                <select id="categoryFilter" onchange="filterProducts()">
+                    <option value="">All Categories</option>
+                    <option value="grains">Grains & Rice</option>
+                    <option value="tubers">Tubers & Roots</option>
+                    <option value="proteins">Proteins & Seafood</option>
+                    <option value="oils">Oils & Spices</option>
+                    <option value="provisions">Provisions</option>
+                    <option value="tailoring">Tailoring & Fashion</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="others">Others</option>
+                </select>
+                <div class="price-range">
+                    <input type="number" id="minPrice" placeholder="Min ₦" oninput="filterProducts()">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="Max ₦" oninput="filterProducts()">
+                </div>
+                <button class="btn btn-info" onclick="filterProducts()">
+                    <i class="fas fa-filter"></i> Apply
+                </button>
+            </div>
+
+            <h2 class="section-title"><i class="fas fa-fire"></i> Trending Partner Products</h2>
+            <div id="productsGrid" class="products-grid"></div>
+            <div id="loadingSpinner" class="spinner" style="display:none;"></div>
+            <button id="loadMoreBtn" class="btn btn-primary" style="display:block; margin:2rem auto;" onclick="loadMoreProducts()">
+                <i class="fas fa-chevron-down"></i> Load More
+            </button>
+        </div>
+
+        <!-- Partner Page -->
+        <div id="partner" class="page">
+            <div style="max-width:800px; margin:0 auto;">
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-handshake"></i></div>
+                        <h2>Become a G-Market Villa Partner</h2>
+                        <p style="color: #666;">List your products and start earning today!</p>
+                    </div>
+
+                    <form id="partnerForm">
+                        <!-- Product Images -->
+                        <div class="camera-section">
+                            <h4 style="margin-bottom: 1rem; color: var(--primary);">
+                                <i class="fas fa-camera"></i> Product Photos (up to 5)
+                            </h4>
+                            <div class="image-preview-grid" id="productImagesPreview"></div>
+                            <div class="camera-buttons">
+                                <button type="button" class="btn btn-info" onclick="openCamera()">
+                                    <i class="fas fa-camera"></i> Take Photo
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="document.getElementById('productImagesInput').click()">
+                                    <i class="fas fa-images"></i> Upload
+                                </button>
+                                <input type="file" id="productImagesInput" class="hidden-input" accept="image/*" multiple onchange="handleProductImages(event)">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Name *</label>
+                            <input type="text" id="prodName" placeholder="e.g., Premium Ijebu Garri (5kg)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="prodCategory" onchange="showCategoryFields()" required>
+                                <option value="">Select Category</option>
+                                <option value="grains">Grains & Rice</option>
+                                <option value="tubers">Tubers & Roots</option>
+                                <option value="proteins">Proteins & Seafood</option>
+                                <option value="oils">Oils & Spices</option>
+                                <option value="provisions">Provisions</option>
+                                <option value="tailoring">Tailoring & Fashion</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+
+                        <!-- Tailoring Specs -->
+                        <div id="tailoringSpecs" class="specs-section">
+                            <h4 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-tshirt"></i> Dress Specifications</h4>
+                            <div class="specs-grid">
+                                <div class="form-group">
+                                    <label>Clothing Type</label>
+                                    <select id="clothType">
+                                        <option value="">Select Type</option>
+                                        <option value="traditional">Traditional Wear</option>
+                                        <option value="casual">Casual Wear</option>
+                                        <option value="formal">Formal Suit</option>
+                                        <option value="native">Native Attire</option>
+                                        <option value="dress">Dress/Gown</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select id="clothGender">
+                                        <option value="">Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="unisex">Unisex</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Size</label>
+                                    <select id="clothSize">
+                                        <option value="">Select Size</option>
+                                        <option value="XS">XS</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Material</label>
+                                    <select id="clothMaterial">
+                                        <option value="">Select Material</option>
+                                        <option value="cotton">Cotton</option>
+                                        <option value="silk">Silk</option>
+                                        <option value="lace">Lace</option>
+                                        <option value="ankara">Ankara</option>
+                                        <option value="aso-oke">Aso-Oke</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Color</label>
+                                <input type="text" id="clothColor" placeholder="e.g., Navy Blue">
+                            </div>
+                        </div>
+
+                        <!-- Furniture Specs -->
+                        <div id="furnitureSpecs" class="specs-section">
+                            <h4 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-couch"></i> Furniture Specifications</h4>
+                            <div class="specs-grid">
+                                <div class="form-group">
+                                    <label>Furniture Type</label>
+                                    <select id="furnitureType">
+                                        <option value="">Select Type</option>
+                                        <option value="chair">Chair</option>
+                                        <option value="table">Table</option>
+                                        <option value="bed">Bed</option>
+                                        <option value="sofa">Sofa</option>
+                                        <option value="cabinet">Cabinet</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Material</label>
+                                    <select id="furnitureMaterial">
+                                        <option value="">Select Material</option>
+                                        <option value="wood">Wood</option>
+                                        <option value="metal">Metal</option>
+                                        <option value="plastic">Plastic</option>
+                                        <option value="leather">Leather</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Condition</label>
+                                    <select id="furnitureCondition">
+                                        <option value="new">Brand New</option>
+                                        <option value="used">Used</option>
+                                        <option value="refurbished">Refurbished</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Dimensions</label>
+                                <input type="text" id="furnitureSize" placeholder="e.g., 120cm x 60cm x 75cm">
+                            </div>
+                        </div>
+
+                        <div class="form-row" id="defaultPriceSection">
+                            <div class="form-group">
+                                <label>Price (₦) *</label>
+                                <input type="number" id="prodPrice" placeholder="5000" required min="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity *</label>
+                                <input type="text" id="prodQuantity" placeholder="e.g., 20 bags" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="partnerPhone" placeholder="08012345678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location (State) *</label>
+                            <select id="partnerLocation" required>
+                                <option value="">Select State</option>
+                                <option>Lagos</option>
+                                <option>Abuja</option>
+                                <option>Kano</option>
+                                <option>Oyo</option>
+                                <option>Rivers</option>
+                                <option>Delta</option>
+                                <option>Ogun</option>
+                                <option>Ondo</option>
+                                <option>Enugu</option>
+                                <option>Anambra</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+
+                        <div class="delivery-option">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="homeDelivery" onchange="toggleDeliveryFee()">
+                                <label for="homeDelivery" style="font-weight: 700; margin: 0;">
+                                    <i class="fas fa-truck"></i> Offer Home Delivery
+                                </label>
+                            </div>
+                            <div id="deliveryFeeSection" class="delivery-fee-section">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Delivery Fee (₦)</label>
+                                    <input type="number" id="deliveryFee" value="1500" min="500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #e8f5e9; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                            <p style="font-size: 0.9rem; color: #2e7d32; margin: 0;">
+                                <i class="fas fa-info-circle"></i> <strong>Partnership Deal:</strong> You earn <strong>97.5%</strong> of every sale. We only take 2.5% to maintain the platform!
+                            </p>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i> Submit Product
+                        </button>
+                    </form>
+
+                    <!-- Complaint Section -->
+                    <div class="complaint-section">
+                        <div class="complaint-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Complaint Center</h3>
+                        </div>
+                        <p>Having issues? Contact us on WhatsApp for quick resolution.</p>
+                        <a href="https://wa.me/2349014406974" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page">
+            <div class="dashboard">
+                <div class="sidebar">
+                    <div class="sidebar-logo">
+                        <img src="logo.png" alt="Logo">
+                        <span style="font-weight: 700;">G-Market Villa</span>
+                    </div>
+                    <ul class="sidebar-menu" id="dashboardMenu">
+                        <li><a href="#" class="active" onclick="showDashboardTab('overview')">
+                            <i class="fas fa-chart-pie"></i> Overview
+                        </a></li>
+                        <li><a href="#" onclick="showDashboardTab('orders')">
+                            <i class="fas fa-box"></i> Orders
+                        </a></li>
+                        <li><a href="#" onclick="showDashboardTab('products')">
+                            <i class="fas fa-box-open"></i> My Products
+                        </a></li>
+                        <li><a href="#" onclick="showDashboardTab('withdraw')">
+                            <i class="fas fa-money-bill-wave"></i> Withdraw
+                        </a></li>
+                        <li id="adminTab" style="display:none;">
+                            <a href="#" onclick="showDashboardTab('admin')">
+                                <i class="fas fa-crown"></i> Admin
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dashboard-content">
+                    <!-- Overview Tab -->
+                    <div id="tab-overview" class="dashboard-tab">
+                        <div class="dashboard-header">
+                            <h2><i class="fas fa-hand-wave"></i> Welcome back, Partner!</h2>
+                            <span id="currentDate"></span>
+                        </div>
+
+                        <div class="earnings-grid">
+                            <div class="earning-card">
+                                <div class="earning-label">Total Earnings</div>
+                                <div class="earning-amount" id="totalEarnings">₦0</div>
+                            </div>
+                            <div class="earning-card success">
+                                <div class="earning-label">Available Balance</div>
+                                <div class="earning-amount" style="color: var(--success);" id="availableBalance">₦0</div>
+                            </div>
+                            <div class="earning-card info">
+                                <div class="earning-label">Total Sales</div>
+                                <div class="earning-amount" style="color: var(--info);" id="totalSales">0</div>
+                            </div>
+                            <div class="earning-card warning">
+                                <div class="earning-label">Products Listed</div>
+                                <div class="earning-amount" style="color: var(--warning);" id="totalProducts">0</div>
+                            </div>
+                        </div>
+
+                        <h3 class="section-title"><i class="fas fa-history"></i> Recent Activity</h3>
+                        <div class="activity-list" id="activityList">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>No activity yet. Add your first product!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div id="tab-orders" class="dashboard-tab" style="display:none;">
+                        <h2 class="section-title"><i class="fas fa-box"></i> Your Orders</h2>
+                        <div id="partnerOrdersList">
+                            <div class="empty-state">
+                                <i class="fas fa-box-open"></i>
+                                <p>No orders yet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Tab -->
+                    <div id="tab-products" class="dashboard-tab" style="display:none;">
+                        <h2 class="section-title"><i class="fas fa-box-open"></i> My Products</h2>
+                        <div id="partnerProductsList">
+                            <div class="empty-state">
+                                <i class="fas fa-tag"></i>
+                                <p>No products listed yet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Withdraw Tab -->
+                    <div id="tab-withdraw" class="dashboard-tab" style="display:none;">
+                        <h2 class="section-title"><i class="fas fa-money-bill-wave"></i> Withdraw to Bank</h2>
+
+                        <div class="card">
+                            <h3 class="card-title">Select Your Bank</h3>
+                            <div class="bank-grid">
+                                <div class="bank-option" onclick="selectBank(this, 'GTBank')">
+                                    <i class="fas fa-university"></i>
+                                    <span>GTBank</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'UBA')">
+                                    <i class="fas fa-university"></i>
+                                    <span>UBA</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'Zenith')">
+                                    <i class="fas fa-university"></i>
+                                    <span>Zenith</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'First Bank')">
+                                    <i class="fas fa-university"></i>
+                                    <span>First Bank</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'Opay')">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>OPay</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'Kuda')">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Kuda</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'Palmpay')">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>PalmPay</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank(this, 'Moniepoint')">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Moniepoint</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Account Number</label>
+                                <input type="text" id="accountNumber" placeholder="10-digit number" maxlength="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Amount (₦)</label>
+                                <input type="number" id="withdrawAmount" placeholder="Min: ₦500">
+                                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                                    Available: <span id="availBalance">₦0</span> | Fee: ₦50
+                                </p>
+                            </div>
+
+                            <button class="btn btn-success btn-lg btn-block" onclick="processWithdrawal()">
+                                <i class="fas fa-paper-plane"></i> Withdraw to Bank
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Admin Tab -->
+                    <div id="tab-admin" class="dashboard-tab" style="display:none;">
+                        <h2 class="section-title"><i class="fas fa-crown"></i> Admin Panel</h2>
+
+                        <div class="admin-withdrawal">
+                            <h3><i class="fas fa-coins"></i> Platform Profit</h3>
+                            <div class="profit-display">
+                                <div>Total Profit (2.5%)</div>
+                                <div class="profit-amount" id="platformProfit">₦0</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Withdraw Amount (₦)</label>
+                                <input type="number" id="adminWithdrawAmount" placeholder="Enter amount">
+                            </div>
+                            <button class="btn btn-success btn-block" onclick="processAdminWithdrawal()">
+                                <i class="fas fa-money-bill-transfer"></i> Withdraw to OPay
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title"><i class="fas fa-bullhorn"></i> Post Update</h3>
+                            <div class="form-group">
+                                <textarea id="updateMessage" placeholder="Enter announcement..." style="min-height: 80px;"></textarea>
+                            </div>
+                            <button class="btn btn-info" onclick="postUpdate()">
+                                <i class="fas fa-paper-plane"></i> Post Update
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title"><i class="fas fa-users"></i> All Users</h3>
+                            <div id="adminUsersList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart" class="page">
+            <h2 class="section-title"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <div id="cartItems">
+                <div class="empty-state">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Your cart is empty</p>
+                    <button class="btn btn-primary" onclick="showPage('home')">Start Shopping</button>
+                </div>
+            </div>
+            <div id="cartTotalSection" style="display:none;">
+                <div class="cart-total">
+                    <div class="cart-total-row">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">₦0</span>
+                    </div>
+                    <div class="cart-total-row">
+                        <span>Delivery Fee</span>
+                        <span id="cartDelivery">₦0</span>
+                    </div>
+                    <div class="cart-total-row final">
+                        <span>Total</span>
+                        <span id="cartFinalTotal">₦0</span>
+                    </div>
+                </div>
+                <button class="btn btn-success btn-lg btn-block" onclick="checkout()">
+                    <i class="fas fa-credit-card"></i> Proceed to Checkout
+                </button>
+            </div>
+        </div>
+
+        <!-- Wishlist Page -->
+        <div id="wishlist" class="page">
+            <h2 class="section-title"><i class="fas fa-heart"></i> Your Wishlist</h2>
+            <div id="wishlistItems" class="products-grid">
+                <div class="empty-state" style="grid-column: 1/-1;">
+                    <i class="fas fa-heart-broken"></i>
+                    <p>Your wishlist is empty</p>
+                    <button class="btn btn-primary" onclick="showPage('home')">Browse Products</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partner Profile Page -->
+        <div id="partnerProfile" class="page">
+            <div class="profile-header" id="profileHeader">
+                <div class="profile-avatar"><i class="fas fa-store"></i></div>
+                <h2 id="profileName">Partner Name</h2>
+                <p id="profileInfo">Location | Phone</p>
+            </div>
+            <h3 class="section-title"><i class="fas fa-box-open"></i> Products</h3>
+            <div id="profileProducts" class="products-grid"></div>
+            <h3 class="section-title" id="portfolioTitle" style="display:none;"><i class="fas fa-images"></i> Portfolio</h3>
+            <div class="portfolio-grid" id="profilePortfolio"></div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-sign-in-alt"></i> Login / Register</h2>
+                    <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email / Phone</label>
+                        <input type="text" id="loginUsername" placeholder="Enter email or phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select id="loginRole">
+                            <option value="buyer">Buyer</option>
+                            <option value="partner">Partner</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button type="submit" class="btn btn-success btn-block">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        <button type="button" class="btn btn-info" onclick="register()">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalProductName">Product Name</h2>
+                    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="image-carousel" id="modalCarousel"></div>
+
+                <div class="product-detail-image" id="modalMainImage">
+                    <i class="fas fa-box"></i>
+                </div>
+
+                <div class="partner-info">
+                    <p><i class="fas fa-handshake"></i> <strong>Partner:</strong> 
+                        <span id="modalPartner" style="cursor:pointer; color:var(--primary);" onclick="viewPartnerProfile()">Partner Name</span>
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i> <span id="modalLocation">Location</span></p>
+                    <p><i class="fas fa-phone"></i> <span id="modalPhone">Phone</span></p>
+                </div>
+
+                <div id="modalSpecs"></div>
+                <div id="modalDelivery"></div>
+
+                <div class="price-tag" id="modalPrice">₦0</div>
+
+                <div class="reviews-section">
+                    <h4><i class="fas fa-star"></i> Reviews (<span id="totalReviews">0</span>)</h4>
+                    <div id="reviewsList"></div>
+
+                    <div class="review-form" id="reviewForm">
+                        <h5>Write a Review</h5>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <select id="reviewRating">
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="reviewText" placeholder="Share your experience..."></textarea>
+                        </div>
+                        <button class="btn btn-info btn-sm" onclick="submitReview()">
+                            <i class="fas fa-paper-plane"></i> Submit Review
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button class="btn btn-success btn-block" onclick="addToCart()">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-primary" onclick="addToWishlist()">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Modal -->
+        <div id="cameraModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-camera"></i> Take Photo</h2>
+                    <button class="modal-close" onclick="closeCameraModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="camera-preview" style="height: 300px;">
+                    <video id="cameraVideo" autoplay playsinline></video>
+                    <canvas id="cameraCanvas" style="display:none;"></canvas>
+                </div>
+                <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+                    <button class="btn btn-success btn-block" onclick="capturePhoto()">
+                        <i class="fas fa-camera"></i> Capture
+                    </button>
+                    <button class="btn btn-danger" onclick="closeCameraModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast"></div>
+    </main>
+
+    <script>
+
+        // ==================== Data & State ====================
+        const CATEGORIES = {
+            grains: 'Grains & Rice',
+            tubers: 'Tubers & Roots',
+            proteins: 'Proteins & Seafood',
+            oils: 'Oils & Spices',
+            provisions: 'Provisions',
+            tailoring: 'Tailoring & Fashion',
+            furniture: 'Furniture',
+            electronics: 'Electronics',
+            others: 'Others'
+        };
+
+        const EMOJIS = {
+            grains: '🌾', tubers: '🍠', proteins: '🥩', oils: '🛢️',
+            provisions: '📦', tailoring: '👔', furniture: '🪑',
+            electronics: '💻', others: '📎'
+        };
+
+        let products = JSON.parse(localStorage.getItem('gmarket_products')) || [
+            { id: 1, name: 'Premium Ijebu Garri (5kg)', price: 3500, partner: 'Mama Nkechi', partnerId: 2, location: 'Lagos', phone: '08012345678', emoji: '🌾', sales: 12, category: 'grains', delivery: false, images: [], reviews: [] },
+            { id: 2, name: 'Foreign Rice (50kg)', price: 45000, partner: 'Alhaji Rice', partnerId: 3, location: 'Kano', phone: '08087654321', emoji: '🌾', sales: 8, category: 'grains', delivery: true, deliveryFee: 2000, images: [], reviews: [] },
+            { id: 3, name: 'Palm Oil (5L)', price: 6000, partner: 'Ekpoma Oil', partnerId: 4, location: 'Edo', phone: '08055667788', emoji: '🛢️', sales: 20, category: 'oils', delivery: false, images: [], reviews: [] },
+            { id: 4, name: 'Traditional Agbada Set', price: 25000, partner: 'Tailor Ali', partnerId: 5, location: 'Kano', phone: '08011112222', emoji: '👔', sales: 5, category: 'tailoring', delivery: true, deliveryFee: 1500, specs: { type: 'traditional', gender: 'male', size: 'XL', material: 'aso-oke', color: 'Navy Blue' }, images: [], reviews: [] },
+            { id: 5, name: 'Wooden Dining Table', price: 45000, partner: 'Furniture Plus', partnerId: 6, location: 'Lagos', phone: '08033334444', emoji: '🪑', sales: 3, category: 'furniture', delivery: true, deliveryFee: 3000, specs: { type: 'table', material: 'wood', size: '150cm x 90cm' }, images: [], reviews: [] }
+        ];
+
+        let users = JSON.parse(localStorage.getItem('gmarket_users')) || [
+            { id: 1, username: 'buyer@demo.com', password: 'pass', role: 'buyer', name: 'Demo Buyer' },
+            { id: 2, username: 'partner@demo.com', password: 'pass', role: 'partner', name: 'Demo Partner', partnerInfo: { name: 'Mama Nkechi', phone: '08012345678', location: 'Lagos', portfolio: [] } },
+            { id: 3, username: 'admin', password: 'admin123', role: 'admin', name: 'Administrator' }
+        ];
+
+        let currentUser = JSON.parse(localStorage.getItem('gmarket_currentUser')) || null;
+        let cart = JSON.parse(localStorage.getItem('gmarket_cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('gmarket_wishlist')) || [];
+        let platformProfit = JSON.parse(localStorage.getItem('gmarket_profit')) || 0;
+        let orders = JSON.parse(localStorage.getItem('gmarket_orders')) || [];
+        let partnerOrders = JSON.parse(localStorage.getItem('gmarket_partnerOrders')) || [];
+
+        let currentPage = 1;
+        const pageSize = 8;
+        let selectedBank = null;
+        let currentProduct = null;
+        let productImages = [];
+        let cameraStream = null;
+
+        // ==================== Initialization ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartCount();
+            updateUserDisplay();
+            loadUpdate();
+            updateDashboardStats();
+
+            document.getElementById('partnerForm').addEventListener('submit', addProduct);
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+            // Set current date
+            const dateEl = document.getElementById('currentDate');
+            if (dateEl) {
+                dateEl.textContent = new Date().toLocaleDateString('en-NG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            }
+        });
+
+        // ==================== Navigation ====================
+        function showPage(pageName) {
+            if (pageName === 'dashboard' && !currentUser) {
+                showToast('Please login first', 'error');
+                showLoginModal();
+                return;
+            }
+            if (pageName === 'partner' && (!currentUser || currentUser.role !== 'partner')) {
+                if (!currentUser) {
+                    showToast('Please login as a partner', 'error');
+                    showLoginModal();
+                } else {
+                    showToast('Only partners can list products', 'error');
+                }
+                return;
+            }
+
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageName).classList.add('active');
+            window.scrollTo(0, 0);
+
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('active');
+
+            if (pageName === 'cart') renderCart();
+            if (pageName === 'wishlist') renderWishlist();
+            if (pageName === 'dashboard') {
+                showDashboardTab('overview');
+                updateDashboardStats();
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // ==================== Authentication ====================
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const role = document.getElementById('loginRole').value;
+
+            const user = users.find(u => u.username === username && u.password === password && u.role === role);
+
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('gmarket_currentUser', JSON.stringify(user));
+                updateUserDisplay();
+                closeLoginModal();
+                showToast(`Welcome back, ${user.name || user.username}!`, 'success');
+
+                if (user.role === 'admin' || user.role === 'partner') {
+                    showPage('dashboard');
+                } else {
+                    showPage('home');
+                }
+            } else {
+                showToast('Invalid credentials', 'error');
+            }
+        }
+
+        function register() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const role = document.getElementById('loginRole').value;
+
+            if (!username || !password) {
+                showToast('Please enter username and password', 'error');
+                return;
+            }
+
+            if (users.find(u => u.username === username)) {
+                showToast('User already exists', 'error');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                username,
+                password,
+                role,
+                name: username.split('@')[0]
+            };
+
+            if (role === 'partner') {
+                newUser.partnerInfo = {
+                    name: newUser.name,
+                    phone: '',
+                    location: '',
+                    portfolio: []
+                };
+            }
+
+            users.push(newUser);
+            localStorage.setItem('gmarket_users', JSON.stringify(users));
+            showToast('Registration successful! Please login.', 'success');
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('gmarket_currentUser');
+            updateUserDisplay();
+            showPage('home');
+            showToast('Logged out successfully', 'success');
+        }
+
+        function updateUserDisplay() {
+            const userSpan = document.getElementById('userDisplay');
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const adminTab = document.getElementById('adminTab');
+
+            if (currentUser) {
+                userSpan.textContent = `Hi, ${currentUser.name || currentUser.username}`;
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+
+                if (currentUser.role === 'admin' && adminTab) {
+                    adminTab.style.display = 'block';
+                }
+            } else {
+                userSpan.textContent = '';
+                loginBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                if (adminTab) adminTab.style.display = 'none';
+            }
+        }
+
+        // ==================== Products & Filters ====================
+        function filterProducts() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const min = parseFloat(document.getElementById('minPrice').value) || 0;
+            const max = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+
+            let filtered = products.filter(p =>
+                p.name.toLowerCase().includes(search) &&
+                (category === '' || p.category === category) &&
+                p.price >= min && p.price <= max
+            );
+
+            currentPage = 1;
+            renderProducts(filtered);
+        }
+
+        function renderProducts(filteredProducts = null) {
+            const list = filteredProducts || products;
+            const start = (currentPage - 1) * pageSize;
+            const paginated = list.slice(start, start + pageSize);
+            const grid = document.getElementById('productsGrid');
+
+            if (paginated.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <i class="fas fa-search"></i>
+                        <p>No products found</p>
+                    </div>
+                `;
+                document.getElementById('loadMoreBtn').style.display = 'none';
+                return;
+            }
+
+            grid.innerHTML = paginated.map(p => `
+                <div class="product-card" onclick="showProductDetail(${p.id})">
+                    <div class="product-image">
+                        ${p.images && p.images.length ? `<img src="${p.images[0]}" alt="${p.name}">` : `<span style="font-size: 4rem;">${p.emoji || EMOJIS[p.category] || '📦'}</span>`}
+                        ${p.delivery ? '<span class="product-badge"><i class="fas fa-truck"></i> Delivery</span>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${CATEGORIES[p.category] || p.category}</div>
+                        <div class="product-name">${escapeHtml(p.name)}</div>
+                        <div class="product-partner" onclick="event.stopPropagation(); viewPartnerProfile(${p.partnerId})">
+                            <i class="fas fa-store"></i> ${escapeHtml(p.partner)}
+                        </div>
+                        <div class="product-price">₦${p.price.toLocaleString()}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('loadMoreBtn').style.display = list.length > start + pageSize ? 'block' : 'none';
+        }
+
+        function loadMoreProducts() {
+            currentPage++;
+            filterProducts();
+        }
+
+        // ==================== Product Detail Modal ====================
+        function showProductDetail(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            if (!currentProduct) return;
+
+            document.getElementById('modalProductName').textContent = currentProduct.name;
+            document.getElementById('modalPartner').textContent = currentProduct.partner;
+            document.getElementById('modalPartner').dataset.partnerId = currentProduct.partnerId;
+            document.getElementById('modalLocation').textContent = currentProduct.location;
+            document.getElementById('modalPhone').textContent = currentProduct.phone;
+            document.getElementById('modalPrice').textContent = '₦' + currentProduct.price.toLocaleString();
+
+            // Main image
+            const mainImageEl = document.getElementById('modalMainImage');
+            if (currentProduct.images && currentProduct.images.length) {
+                mainImageEl.innerHTML = `<img src="${currentProduct.images[0]}" alt="${currentProduct.name}">`;
+            } else {
+                mainImageEl.innerHTML = `<span style="font-size: 5rem;">${currentProduct.emoji || EMOJIS[currentProduct.category] || '📦'}</span>`;
+            }
+
+            // Carousel
+            const carousel = document.getElementById('modalCarousel');
+            if (currentProduct.images && currentProduct.images.length > 1) {
+                carousel.innerHTML = currentProduct.images.map((img, i) => `
+                    <div class="carousel-item ${i === 0 ? 'active' : ''}" onclick="setMainImage('${img}')">
+                        <img src="${img}" alt="">
+                    </div>
+                `).join('');
+                carousel.style.display = 'flex';
+            } else {
+                carousel.style.display = 'none';
+            }
+
+            // Specs
+            const specsEl = document.getElementById('modalSpecs');
+            if (currentProduct.specs) {
+                specsEl.innerHTML = Object.entries(currentProduct.specs)
+                    .map(([key, val]) => `
+                        <div class="detail-row">
+                            <span class="detail-label">${key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                            <span class="detail-value">${val}</span>
+                        </div>
+                    `).join('');
+            } else {
+                specsEl.innerHTML = '';
+            }
+
+            // Delivery
+            const deliveryEl = document.getElementById('modalDelivery');
+            if (currentProduct.delivery) {
+                deliveryEl.innerHTML = `
+                    <div class="detail-row">
+                        <span class="detail-label"><i class="fas fa-truck"></i> Home Delivery</span>
+                        <span class="detail-value">₦${currentProduct.deliveryFee?.toLocaleString() || '0'}</span>
+                    </div>
+                `;
+            } else {
+                deliveryEl.innerHTML = '';
+            }
+
+            // Reviews
+            renderReviews();
+
+            // Show/hide review form based on login
+            document.getElementById('reviewForm').style.display = currentUser ? 'block' : 'none';
+
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function setMainImage(imgSrc) {
+            document.getElementById('modalMainImage').innerHTML = `<img src="${imgSrc}" alt="">`;
+        }
+
+        function renderReviews() {
+            const reviews = currentProduct.reviews || [];
+            const avg = reviews.length ? (reviews.reduce((a, b) => a + b.rating, 0) / reviews.length).toFixed(1) : '0.0';
+
+            document.getElementById('totalReviews').textContent = reviews.length;
+
+            const reviewsList = document.getElementById('reviewsList');
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<p style="color: #888; font-style: italic;">No reviews yet</p>';
+            } else {
+                reviewsList.innerHTML = reviews.map(r => `
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">${escapeHtml(r.user)}</span>
+                            <span class="review-rating">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>
+                        </div>
+                        <p>${escapeHtml(r.comment)}</p>
+                        <span class="review-date">${new Date(r.date).toLocaleDateString()}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function submitReview() {
+            if (!currentUser) {
+                showToast('Please login to review', 'error');
+                return;
+            }
+
+            const rating = parseInt(document.getElementById('reviewRating').value);
+            const comment = document.getElementById('reviewText').value.trim();
+
+            if (!comment) {
+                showToast('Please write a comment', 'error');
+                return;
+            }
+
+            const review = {
+                user: currentUser.name || currentUser.username,
+                rating,
+                comment,
+                date: new Date().toISOString()
+            };
+
+            currentProduct.reviews = currentProduct.reviews || [];
+            currentProduct.reviews.push(review);
+            localStorage.setItem('gmarket_products', JSON.stringify(products));
+
+            document.getElementById('reviewText').value = '';
+            renderReviews();
+            showToast('Review submitted!', 'success');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        // ==================== Cart & Wishlist ====================
+        function addToCart() {
+            if (!currentUser) {
+                showToast('Please login to add to cart', 'error');
+                showLoginModal();
+                return;
+            }
+
+            const existingItem = cart.find(item => item.productId === currentProduct.id);
+            if (existingItem) {
+                showToast('Item already in cart', 'warning');
+                return;
+            }
+
+            cart.push({
+                productId: currentProduct.id,
+                name: currentProduct.name,
+                price: currentProduct.price,
+                delivery: currentProduct.delivery,
+                deliveryFee: currentProduct.deliveryFee || 0,
+                partnerId: currentProduct.partnerId,
+                image: currentProduct.images?.[0] || null,
+                emoji: currentProduct.emoji || EMOJIS[currentProduct.category] || '📦'
+            });
+
+            localStorage.setItem('gmarket_cart', JSON.stringify(cart));
+            updateCartCount();
+            showToast('Added to cart!', 'success');
+            closeModal();
+        }
+
+        function addToWishlist() {
+            if (!currentUser) {
+                showToast('Please login to add to wishlist', 'error');
+                showLoginModal();
+                return;
+            }
+
+            if (wishlist.find(p => p.id === currentProduct.id)) {
+                showToast('Already in wishlist', 'warning');
+                return;
+            }
+
+            wishlist.push(currentProduct);
+            localStorage.setItem('gmarket_wishlist', JSON.stringify(wishlist));
+            showToast('Added to wishlist!', 'success');
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const totalSection = document.getElementById('cartTotalSection');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Your cart is empty</p>
+                        <button class="btn btn-primary" onclick="showPage('home')">Start Shopping</button>
+                    </div>
+                `;
+                totalSection.style.display = 'none';
+                return;
+            }
+
+            container.innerHTML = cart.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-image">
+                            ${item.image ? `<img src="${item.image}" alt="">` : `<span style="font-size: 1.5rem;">${item.emoji}</span>`}
+                        </div>
+                        <div class="cart-item-details">
+                            <h4>${escapeHtml(item.name)}</h4>
+                            <p>₦${item.price.toLocaleString()}</p>
+                            ${item.delivery ? `<p style="color: var(--success); font-size: 0.8rem;"><i class="fas fa-truck"></i> Delivery: ₦${item.deliveryFee.toLocaleString()}</p>` : ''}
+                        </div>
+                    </div>
+                    <button class="btn btn-danger btn-sm" onclick="removeFromCart(${idx})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, i) => sum + i.price, 0);
+            const deliveryFee = cart.reduce((sum, i) => sum + (i.delivery ? i.deliveryFee : 0), 0);
+            const total = subtotal + deliveryFee;
+
+            document.getElementById('cartSubtotal').textContent = '₦' + subtotal.toLocaleString();
+            document.getElementById('cartDelivery').textContent = '₦' + deliveryFee.toLocaleString();
+            document.getElementById('cartFinalTotal').textContent = '₦' + total.toLocaleString();
+            totalSection.style.display = 'block';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('gmarket_cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+            showToast('Item removed', 'success');
+        }
+
+        function renderWishlist() {
+            const container = document.getElementById('wishlistItems');
+
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <i class="fas fa-heart-broken"></i>
+                        <p>Your wishlist is empty</p>
+                        <button class="btn btn-primary" onclick="showPage('home')">Browse Products</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = wishlist.map(p => `
+                <div class="product-card" onclick="showProductDetail(${p.id})">
+                    <div class="product-image">
+                        ${p.images && p.images.length ? `<img src="${p.images[0]}" alt="${p.name}">` : `<span style="font-size: 4rem;">${p.emoji || EMOJIS[p.category] || '📦'}</span>`}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${CATEGORIES[p.category] || p.category}</div>
+                        <div class="product-name">${escapeHtml(p.name)}</div>
+                        <div class="product-price">₦${p.price.toLocaleString()}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function checkout() {
+            if (!currentUser) {
+                showToast('Please login to checkout', 'error');
+                showLoginModal();
+                return;
+            }
+
+            if (cart.length === 0) return;
+
+            const subtotal = cart.reduce((sum, i) => sum + i.price, 0);
+            const deliveryFee = cart.reduce((sum, i) => sum + (i.delivery ? i.deliveryFee : 0), 0);
+            const total = subtotal + deliveryFee;
+
+            // Create order
+            const order = {
+                id: Date.now(),
+                buyer: currentUser.username,
+                items: [...cart],
+                subtotal,
+                deliveryFee,
+                total,
+                status: 'Pending',
+                date: new Date().toISOString()
+            };
+
+            orders.push(order);
+            localStorage.setItem('gmarket_orders', JSON.stringify(orders));
+
+            // Notify partners
+            cart.forEach(item => {
+                partnerOrders.push({
+                    id: Date.now() + Math.random(),
+                    productId: item.productId,
+                    productName: item.name,
+                    partnerId: item.partnerId,
+                    buyer: currentUser.username,
+                    amount: item.price,
+                    deliveryFee: item.delivery ? item.deliveryFee : 0,
+                    status: 'New',
+                    date: new Date().toISOString()
+                });
+
+                // Update partner earnings
+                const partner = users.find(u => u.id === item.partnerId);
+                if (partner) {
+                    partner.earnings = (partner.earnings || 0) + (item.price * 0.975);
+                    partner.balance = (partner.balance || 0) + (item.price * 0.975);
+                }
+
+                // Update platform profit
+                platformProfit += item.price * 0.025;
+            });
+
+            localStorage.setItem('gmarket_partnerOrders', JSON.stringify(partnerOrders));
+            localStorage.setItem('gmarket_users', JSON.stringify(users));
+            localStorage.setItem('gmarket_profit', JSON.stringify(platformProfit));
+
+            // Clear cart
+            cart = [];
+            localStorage.setItem('gmarket_cart', JSON.stringify(cart));
+            updateCartCount();
+
+            showToast('Order placed successfully!', 'success');
+            showPage('home');
+        }
+
+        // ==================== Partner Profile ====================
+        function viewPartnerProfile(partnerId) {
+            if (!partnerId && currentProduct) {
+                partnerId = currentProduct.partnerId;
+            }
+
+            const partner = users.find(u => u.role === 'partner' && u.id === partnerId);
+            if (!partner) return;
+
+            document.getElementById('profileName').textContent = partner.partnerInfo?.name || partner.name;
+            document.getElementById('profileInfo').innerHTML = `
+                <i class="fas fa-map-marker-alt"></i> ${partner.partnerInfo?.location || 'Nigeria'} |
+                <i class="fas fa-phone"></i> ${partner.partnerInfo?.phone || 'N/A'}
+            `;
+
+            const partnerProducts = products.filter(p => p.partnerId === partnerId);
+            const productsGrid = document.getElementById('profileProducts');
+
+            if (partnerProducts.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <i class="fas fa-box-open"></i>
+                        <p>No products yet</p>
+                    </div>
+                `;
+            } else {
+                productsGrid.innerHTML = partnerProducts.map(p => `
+                    <div class="product-card" onclick="showProductDetail(${p.id})">
+                        <div class="product-image">
+                            ${p.images && p.images.length ? `<img src="${p.images[0]}" alt="${p.name}">` : `<span style="font-size: 4rem;">${p.emoji || EMOJIS[p.category] || '📦'}</span>`}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${escapeHtml(p.name)}</div>
+                            <div class="product-price">₦${p.price.toLocaleString()}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Portfolio
+            const portfolio = partner.partnerInfo?.portfolio || [];
+            const portfolioEl = document.getElementById('profilePortfolio');
+            const portfolioTitle = document.getElementById('portfolioTitle');
+
+            if (portfolio.length > 0) {
+                portfolioTitle.style.display = 'block';
+                portfolioEl.innerHTML = portfolio.map(img => `
+                    <div class="portfolio-item">
+                        <img src="${img}" alt="Portfolio">
+                    </div>
+                `).join('');
+            } else {
+                portfolioTitle.style.display = 'none';
+                portfolioEl.innerHTML = '';
+            }
+
+            closeModal();
+            showPage('partnerProfile');
+        }
+
+        // ==================== Add Product ====================
+        function showCategoryFields() {
+            const category = document.getElementById('prodCategory').value;
+            document.getElementById('tailoringSpecs').classList.toggle('active', category === 'tailoring');
+            document.getElementById('furnitureSpecs').classList.toggle('active', category === 'furniture');
+        }
+
+        function toggleDeliveryFee() {
+            const isChecked = document.getElementById('homeDelivery').checked;
+            document.getElementById('deliveryFeeSection').classList.toggle('active', isChecked);
+        }
+
+        function handleProductImages(event) {
+            const files = Array.from(event.target.files);
+            if (productImages.length + files.length > 5) {
+                showToast('Maximum 5 images allowed', 'error');
+                return;
+            }
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    productImages.push(e.target.result);
+                    updateProductImagesPreview();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function updateProductImagesPreview() {
+            const preview = document.getElementById('productImagesPreview');
+            preview.innerHTML = productImages.map((img, i) => `
+                <div class="image-preview-item">
+                    <img src="${img}" alt="">
+                    <button type="button" class="remove-btn" onclick="removeProductImage(${i})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeProductImage(index) {
+            productImages.splice(index, 1);
+            updateProductImagesPreview();
+        }
+
+        function openCamera() {
+            document.getElementById('cameraModal').classList.add('active');
+            startCamera();
+        }
+
+        function closeCameraModal() {
+            document.getElementById('cameraModal').classList.remove('active');
+            stopCamera();
+        }
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                cameraStream = stream;
+                const video = document.getElementById('cameraVideo');
+                video.srcObject = stream;
+            } catch (err) {
+                showToast('Camera access denied or not available', 'error');
+            }
+        }
+
+        function stopCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+        }
+
+        function capturePhoto() {
+            const video = document.getElementById('cameraVideo');
+            const canvas = document.getElementById('cameraCanvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0);
+
+            const imageData = canvas.toDataURL('image/jpeg');
+            if (productImages.length < 5) {
+                productImages.push(imageData);
+                updateProductImagesPreview();
+                showToast('Photo captured!', 'success');
+                closeCameraModal();
+            } else {
+                showToast('Maximum 5 images allowed', 'error');
+            }
+        }
+
+        function addProduct(e) {
+            e.preventDefault();
+
+            if (!currentUser || currentUser.role !== 'partner') {
+                showToast('Only partners can add products', 'error');
+                return;
+            }
+
+            const category = document.getElementById('prodCategory').value;
+            const specs = {};
+
+            if (category === 'tailoring') {
+                specs.type = document.getElementById('clothType').value;
+                specs.gender = document.getElementById('clothGender').value;
+                specs.size = document.getElementById('clothSize').value;
+                specs.material = document.getElementById('clothMaterial').value;
+                specs.color = document.getElementById('clothColor').value;
+            } else if (category === 'furniture') {
+                specs.type = document.getElementById('furnitureType').value;
+                specs.material = document.getElementById('furnitureMaterial').value;
+                specs.condition = document.getElementById('furnitureCondition').value;
+                specs.size = document.getElementById('furnitureSize').value;
+            }
+
+            const newProduct = {
+                id: Date.now(),
+                name: document.getElementById('prodName').value,
+                category: category,
+                price: parseFloat(document.getElementById('prodPrice').value) || 0,
+                quantity: document.getElementById('prodQuantity').value,
+                partner: currentUser.partnerInfo?.name || currentUser.name,
+                partnerId: currentUser.id,
+                location: document.getElementById('partnerLocation').value,
+                phone: document.getElementById('partnerPhone').value,
+                emoji: EMOJIS[category] || '📦',
+                sales: 0,
+                delivery: document.getElementById('homeDelivery').checked,
+                deliveryFee: parseFloat(document.getElementById('deliveryFee').value) || 0,
+                specs: Object.keys(specs).length ? specs : null,
+                images: [...productImages],
+                reviews: []
+            };
+
+            products.unshift(newProduct);
+            localStorage.setItem('gmarket_products', JSON.stringify(products));
+
+            // Reset form
+            productImages = [];
+            updateProductImagesPreview();
+            document.getElementById('partnerForm').reset();
+            document.getElementById('tailoringSpecs').classList.remove('active');
+            document.getElementById('furnitureSpecs').classList.remove('active');
+            document.getElementById('deliveryFeeSection').classList.remove('active');
+
+            showToast('Product added successfully!', 'success');
+            showPage('home');
+            renderProducts();
+        }
+
+        // ==================== Dashboard ====================
+        function showDashboardTab(tabName) {
+            if (tabName === 'admin') {
+                const pwd = prompt('Enter Admin Password:');
+                if (pwd !== 'admin123') {
+                    showToast('Incorrect password', 'error');
+                    return;
+                }
+            }
+
+            document.querySelectorAll('.dashboard-tab').forEach(t => t.style.display = 'none');
+            document.getElementById('tab-' + tabName).style.display = 'block';
+
+            document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+            const activeLink = document.querySelector(`.sidebar-menu a[onclick*="'${tabName}'"]`);
+            if (activeLink) activeLink.classList.add('active');
+
+            if (tabName === 'orders') renderPartnerOrders();
+            if (tabName === 'products') renderPartnerProducts();
+            if (tabName === 'admin') renderAdminPanel();
+        }
+
+        function updateDashboardStats() {
+            if (!currentUser) return;
+
+            let earnings = 0, balance = 0, sales = 0, productCount = 0;
+
+            if (currentUser.role === 'partner') {
+                const myProducts = products.filter(p => p.partnerId === currentUser.id);
+                productCount = myProducts.length;
+
+                const myOrders = partnerOrders.filter(o => o.partnerId === currentUser.id);
+                sales = myOrders.length;
+
+                earnings = myOrders.reduce((sum, o) => sum + o.amount * 0.975, 0);
+                balance = earnings; // Simplified
+            } else if (currentUser.role === 'admin') {
+                earnings = platformProfit;
+                balance = platformProfit;
+                sales = orders.length;
+                productCount = products.length;
+            }
+
+            document.getElementById('totalEarnings').textContent = '₦' + Math.floor(earnings).toLocaleString();
+            document.getElementById('availableBalance').textContent = '₦' + Math.floor(balance).toLocaleString();
+            document.getElementById('totalSales').textContent = sales.toLocaleString();
+            document.getElementById('totalProducts').textContent = productCount.toLocaleString();
+            document.getElementById('statEarnings').textContent = '₦' + Math.floor(earnings).toLocaleString();
+            document.getElementById('availBalance').textContent = '₦' + Math.floor(balance).toLocaleString();
+
+            // Activity list
+            const activityList = document.getElementById('activityList');
+            const myOrders = partnerOrders.filter(o => o.partnerId === currentUser.id).slice(0, 5);
+
+            if (myOrders.length === 0) {
+                activityList.innerHTML = `
+                    <div class="empty-state" style="padding: 2rem;">
+                        <i class="fas fa-inbox"></i>
+                        <p>No activity yet</p>
+                    </div>
+                `;
+            } else {
+                activityList.innerHTML = myOrders.map(o => `
+                    <div class="activity-item">
+                        <div class="activity-info">
+                            <h4>${escapeHtml(o.productName)}</h4>
+                            <p>${new Date(o.date).toLocaleDateString()}</p>
+                        </div>
+                        <div class="activity-amount">
+                            <div class="amount">₦${o.amount.toLocaleString()}</div>
+                            <span class="status status-${o.status.toLowerCase()}">${o.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderPartnerOrders() {
+            const list = partnerOrders.filter(o => o.partnerId === currentUser?.id);
+            const container = document.getElementById('partnerOrdersList');
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <p>No orders yet</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = list.map(o => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-details">
+                                <h4>${escapeHtml(o.productName)}</h4>
+                                <p>Buyer: ${o.buyer}</p>
+                                <p>${new Date(o.date).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; color: var(--primary);">₦${o.amount.toLocaleString()}</div>
+                            <span class="status status-${o.status.toLowerCase()}">${o.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderPartnerProducts() {
+            const myProducts = products.filter(p => p.partnerId === currentUser?.id);
+            const container = document.getElementById('partnerProductsList');
+
+            if (myProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-tag"></i>
+                        <p>No products listed yet</p>
+                        <button class="btn btn-primary" onclick="showPage('partner')">Add Product</button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = myProducts.map(p => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-image">
+                                ${p.images?.length ? `<img src="${p.images[0]}" alt="">` : `<span style="font-size: 1.5rem;">${p.emoji || EMOJIS[p.category] || '📦'}</span>`}
+                            </div>
+                            <div class="cart-item-details">
+                                <h4>${escapeHtml(p.name)}</h4>
+                                <p>₦${p.price.toLocaleString()} | Sales: ${p.sales}</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${p.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function deleteProduct(productId) {
+            if (!confirm('Are you sure you want to delete this product?')) return;
+
+            products = products.filter(p => p.id !== productId);
+            localStorage.setItem('gmarket_products', JSON.stringify(products));
+            renderPartnerProducts();
+            renderProducts();
+            showToast('Product deleted', 'success');
+        }
+
+        // ==================== Withdrawal ====================
+        function selectBank(element, bankName) {
+            document.querySelectorAll('.bank-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedBank = bankName;
+        }
+
+        function processWithdrawal() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const accountNumber = document.getElementById('accountNumber').value;
+
+            if (!selectedBank) {
+                showToast('Please select a bank', 'error');
+                return;
+            }
+
+            if (!accountNumber || accountNumber.length !== 10) {
+                showToast('Please enter a valid 10-digit account number', 'error');
+                return;
+            }
+
+            if (!amount || amount < 500) {
+                showToast('Minimum withdrawal is ₦500', 'error');
+                return;
+            }
+
+            const fee = 50;
+            const total = amount + fee;
+
+            // Check balance (simplified)
+            const myOrders = partnerOrders.filter(o => o.partnerId === currentUser?.id);
+            const balance = myOrders.reduce((sum, o) => sum + o.amount * 0.975, 0);
+
+            if (total > balance) {
+                showToast('Insufficient balance', 'error');
+                return;
+            }
+
+            showToast(`₦${amount.toLocaleString()} sent to ${selectedBank}!`, 'success');
+            document.getElementById('withdrawAmount').value = '';
+            document.getElementById('accountNumber').value = '';
+            document.querySelectorAll('.bank-option').forEach(opt => opt.classList.remove('selected'));
+            selectedBank = null;
+        }
+
+        // ==================== Admin Panel ====================
+        function renderAdminPanel() {
+            document.getElementById('platformProfit').textContent = '₦' + Math.floor(platformProfit).toLocaleString();
+
+            const usersList = document.getElementById('adminUsersList');
+            usersList.innerHTML = users.map(u => `
+                <div class="detail-row">
+                    <span>${escapeHtml(u.name || u.username)}</span>
+                    <span class="detail-value" style="text-transform: capitalize;">${u.role}</span>
+                </div>
+            `).join('');
+        }
+
+        function processAdminWithdrawal() {
+            const amount = parseFloat(document.getElementById('adminWithdrawAmount').value);
+
+            if (!amount || amount < 100) {
+                showToast('Minimum withdrawal is ₦100', 'error');
+                return;
+            }
+
+            if (amount > platformProfit) {
+                showToast('Insufficient profit', 'error');
+                return;
+            }
+
+            platformProfit -= amount;
+            localStorage.setItem('gmarket_profit', JSON.stringify(platformProfit));
+            showToast(`₦${amount.toLocaleString()} withdrawn!`, 'success');
+            renderAdminPanel();
+        }
+
+        function postUpdate() {
+            const msg = document.getElementById('updateMessage').value.trim();
+            if (!msg) return;
+
+            localStorage.setItem('gmarket_update', msg);
+            document.getElementById('updateText').textContent = msg;
+            document.getElementById('updateBanner').style.display = 'flex';
+            document.getElementById('updateMessage').value = '';
+            showToast('Update posted!', 'success');
+        }
+
+        function loadUpdate() {
+            const update = localStorage.getItem('gmarket_update');
+            if (update) {
+                document.getElementById('updateText').textContent = update;
+                document.getElementById('updateBanner').style.display = 'flex';
+            }
+        }
+
+        function closeUpdate() {
+            document.getElementById('updateBanner').style.display = 'none';
+        }
+
+        // ==================== Utilities ====================
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                stopCamera();
+            }
+        };
+    </script>
+</body>
+</html>
